@@ -1,11 +1,11 @@
 var myMax = function(array){
-	 var highNumber = null;
-	 array.forEach(function(el){
-		 if(el > highNumber){
-			 highNumber = el;
-		 }
-	 });
-	return highNumber;
+  var highNumber = null;
+  array.forEach(function(el){
+    if(el > highNumber){
+      highNumber = el;
+    }
+  });
+  return highNumber;
 }
 
 console.log("myMax: " + myMax([1, 2, 6, 3, 9, 8, 4]));
