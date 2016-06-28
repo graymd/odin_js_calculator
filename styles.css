@@ -1,0 +1,8 @@
+#wrapper {
+  width: 960px;
+  height: auto;
+}
+
+.inline {
+  display: inline-block;
+}
