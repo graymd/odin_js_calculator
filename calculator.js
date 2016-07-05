@@ -23,6 +23,7 @@ var answer = "";
 $(document).ready(function(){
   $('.calcButton').on("click", function(){
     calculator($(this).text());
+    $('span').append(display());
   });
 });
 
@@ -118,4 +119,16 @@ var clearInputs = function clearInputs(){
 
 var checkIsClear = function checkIsClear(userInput){
   return userInput === "CLEAR";
+}
+
+var display = function display(){
+  if (answer){
+    return answer;
+  } else if (secondNumber){
+    return secondNumber;
+  } else if (operand){
+    return operand;
+  } else if (firstNumber){
+    return firstNumber;
+  }
 }
