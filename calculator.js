@@ -19,11 +19,13 @@ var firstNumber = "";
 var operand = "";
 var secondNumber = "";
 var answer = "";
+var parentFilterUsed = false;
 
 $(document).ready(function(){
   $('.calcButton').on("click", function(){
     calculator($(this).text());
-    $('span').append(display());
+    parentFilter();
+    display();
   });
 });
 
@@ -97,6 +99,7 @@ var resetInput = function resetInput(answer, newOperand){
   firstNumber = answer;
   resetOperand(newOperand);
   clearSecondNumber();
+  clearAnswer();
 }
 
 var resetOperand = function resetOperand(newOperand = ""){
@@ -111,17 +114,22 @@ var clearFirstNumber = function clearFirstNumber(){
   firstNumber = '';
 }
 
+var clearAnswer = function clearAnswer(){
+  answer = '';
+}
+
 var clearInputs = function clearInputs(){
   clearFirstNumber();
   clearSecondNumber();
   resetOperand();
+  parentFilterUsedReset();
 }
 
 var checkIsClear = function checkIsClear(userInput){
   return userInput === "CLEAR";
 }
 
-var display = function display(){
+var dataForDisplay = function dataForDisplay(){
   if (answer){
     return answer;
   } else if (secondNumber){
@@ -131,4 +139,26 @@ var display = function display(){
   } else if (firstNumber){
     return firstNumber;
   }
+}
+
+var clearDisplay = function clearDisplay(){
+  $('span').html('');
+}
+
+var display = function display(){
+    clearDisplay();
+    $('span').append(dataForDisplay())
+}
+
+var parentFilter = function parentFilter(){
+  if (!parentFilterUsed) {
+    if (firstNumber == "80085" || secondNumber == "80085"){
+    alert("funny are we?")
+    parentFilterUsed = true;
+    }
+  }
+}
+
+var parentFilterUsedReset = function parentFilterUsedReset(){
+  parentFilterUsed = false;
 }
